@@ -13,9 +13,11 @@ load_dotenv()
 
 app = FastAPI(title="Portfolio AI API")
 
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # update with your Vercel domain in production
+    allow_origins=allowed_origins,
     allow_methods=["POST"],
     allow_headers=["*"],
 )
