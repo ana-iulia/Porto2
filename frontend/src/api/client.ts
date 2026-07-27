@@ -1,4 +1,4 @@
-const BASE = (import.meta.env.VITE_API_URL ?? '') + '/api'
+const BASE = '/api'
 
 export interface InterviewPayload {
   role: 'recruiter' | 'collaborator' | 'developer'
