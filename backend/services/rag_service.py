@@ -2,8 +2,9 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
+import os
 
-CHROMA_PATH = "chroma_db"
+CHROMA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "chroma_db")
 
 SYSTEM_PROMPT = PromptTemplate(
     input_variables=["context", "question"],

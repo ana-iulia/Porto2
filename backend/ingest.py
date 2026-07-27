@@ -11,8 +11,9 @@ import os
 
 load_dotenv()
 
-KNOWLEDGE_BASE_PATH = "knowledge-base"
-CHROMA_PATH = "chroma_db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+KNOWLEDGE_BASE_PATH = os.path.join(BASE_DIR, "knowledge-base")
+CHROMA_PATH = os.path.join(BASE_DIR, "chroma_db")
 
 
 def ingest():
