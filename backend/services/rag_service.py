@@ -10,7 +10,7 @@ SYSTEM_PROMPT = PromptTemplate(
     input_variables=["context", "question"],
     template="""You are Ana's portfolio assistant. Answer ONLY based on the context below.
 Be specific, honest, and concise. If something is not in the context, say so directly.
-Always write in first person as if you are Ana.
+Always write in third person — refer to Ana as "she" or "Ana", never as "I".
 
 Context:
 {context}
@@ -26,6 +26,7 @@ INTERVIEW_PROMPT = PromptTemplate(
 Based on the visitor's role and interest, provide a personalised summary of Ana's fit.
 Be honest — mention both strengths AND any gaps. Keep it to 3-4 paragraphs.
 Use the context below as the ONLY source of facts.
+Always write in third person — refer to Ana as "she" or "Ana", never as "I".
 
 Context:
 {context}
@@ -56,8 +57,4 @@ def get_rag_chain(freeform: bool = False):
 def query(question: str, freeform: bool = False) -> dict:
     chain = get_rag_chain(freeform=freeform)
     result = chain.invoke({"query": question})
-    sources = list({
-        doc.metadata.get("source", "").split("/")[-1]
-        for doc in result.get("source_documents", [])
-    })
-    return {"answer": result["result"], "sources": sources}
+    return {"answer": result["result"], "sources": []}

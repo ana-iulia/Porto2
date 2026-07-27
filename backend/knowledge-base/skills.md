@@ -1,7 +1,8 @@
 # Skills
 
 ## Languages
-- Python (primary)
+- Java (first language; professional background)
+- Python (current primary for AI/ML work)
 - TypeScript / JavaScript
 - SQL
 
